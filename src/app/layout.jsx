@@ -3,8 +3,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
 export const metadata = {
-  title: "Budapest Hotel Service",
-  description: "Luxury stays in Budapest’s most charming neighborhoods",
+  title: "Rent in Hungary",
+  description: "Luxury and Affordable stays in Budapest’s most charming neighborhoods",
 };
 
 export default function RootLayout({ children }) {

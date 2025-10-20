@@ -3,7 +3,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { hotels } from "@/lib/hotels";
-import { RoomGallery } from "@/components/room-gallery";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -23,73 +22,22 @@ export default function BookingPage() {
   const [name, setName] = useState("");
   const [guests, setGuests] = useState(2);
   const [hotelSlug, setHotelSlug] = useState("");
+  const selectedHotel = hotels.find((h) => h.slug === hotelSlug);
+  const hotelRooms = selectedHotel?.rooms ?? [];
   const [roomSlug, setRoomSlug] = useState("");
+  const selectedRoom = hotelRooms.find((r) => r.slug === roomSlug);
 
   // availability UI
   const [availabilityShown, setAvailabilityShown] = useState(false);
   const availabilityRef = useRef(null);
-  const [availableRanges, setAvailableRanges] = useState([]);
-
+  const [disabledDates, setDisabledDates] = useState([]);
   // calendar range selected by user: { from: Date|null, to: Date|null } or null
   const [range, setRange] = useState(null);
 
-  // derived selections
-  const hotelsList = hotels ?? [];
-  const selectedHotel = useMemo(() => hotelsList.find((h) => h.slug === hotelSlug), [
-    hotelSlug,
-    hotelsList,
-  ]);
-  const hotelRooms = selectedHotel?.rooms ?? [];
-  const selectedRoom = hotelRooms.find((r) => r.slug === roomSlug);
-
   useEffect(() => setRoomSlug(""), [hotelSlug]); // clear room when hotel changes
-
-  const decGuests = () => setGuests((g) => Math.max(1, g - 1));
-  const incGuests = () => setGuests((g) => g + 1);
-
-  // ----- Disabled dates configuration (future: pull from API) -----
-  // Example: single disabled days or ranges. Format is either Date or { from: Date, to: Date }
-  // You can easily populate this from the server later.
-  const disabledDates = useMemo(() => {
-    // demo: two individual blocked days and one blocked range
-    const d = new Date();
-    const day = (n) => {
-      const x = new Date(d);
-      x.setDate(d.getDate() + n);
-      x.setHours(0, 0, 0, 0);
-      return x;
-    };
-
-    return [
-      day(2),
-      day(3),
-      { from: day(10), to: day(12) }, // blocked range
-    ];
-  }, []);
-
-  // helper to determine if a date is disabled (supports single dates and ranges)
-  function isDateDisabled(check) {
-    if (!check) return false;
-    const target = new Date(check);
-    target.setHours(0, 0, 0, 0);
-
-    for (const item of disabledDates) {
-      if (!item) continue;
-      if (item instanceof Date) {
-        const d = new Date(item);
-        d.setHours(0, 0, 0, 0);
-        if (d.getTime() === target.getTime()) return true;
-      } else if (item.from && item.to) {
-        const from = new Date(item.from);
-        const to = new Date(item.to);
-        from.setHours(0, 0, 0, 0);
-        to.setHours(0, 0, 0, 0);
-        if (target.getTime() >= from.getTime() && target.getTime() <= to.getTime())
-          return true;
-      }
-    }
-    return false;
-  }
+  useEffect(() => setAvailabilityShown(false), [hotelSlug, roomSlug]); // hide availability when hotel/room changes
+  useEffect(() => setDisabledDates([]), [hotelSlug, roomSlug]);
+  useEffect(() => setRange(null), [hotelSlug, roomSlug]);
 
   // ----- Simulated checkAvailability (replace with API) -----
   async function checkAvailability() {
@@ -102,22 +50,21 @@ export default function BookingPage() {
       return;
     }
 
-    // simulate API call latency
-    await new Promise((r) => setTimeout(r, 500));
-
-    // demo available ranges (ISO date strings) — replace with actual API results
-    const today = new Date();
-    const addDays = (n) => {
-      const x = new Date(today);
-      x.setDate(today.getDate() + n);
-      return x.toISOString().slice(0, 10);
+    // disabled dates set here
+    const d = new Date();
+    const day = (n) => {
+      const x = new Date(d);
+      x.setDate(d.getDate() + n);
+      x.setHours(0, 0, 0, 0);
+      return x;
     };
-
-    setAvailableRanges([
-      { from: addDays(5), to: addDays(9) },
-      { from: addDays(15), to: addDays(20) },
+    setDisabledDates([
+      day(2),
+      day(3),
+      day(10),
+      day(11),
+      day(12)
     ]);
-
     setAvailabilityShown(true);
 
     // scroll to the availability block
@@ -125,6 +72,36 @@ export default function BookingPage() {
       availabilityRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 50);
   }
+
+  const handleSelectRange = (val) => {
+  if (!val || !val?.from || !val?.to) {
+    setRange(val);
+    return;
+  }
+
+  // Clip the range at the first disabled date
+  let current = new Date(val.from);
+  let clippedTo = val.to;
+
+    const isSameDay = (a, b) =>
+    a.getFullYear() === b.getFullYear() &&
+    a.getMonth() === b.getMonth() &&
+    a.getDate() === b.getDate();
+
+
+  while (current <= val.to) {
+    const isDisabled = disabledDates.some(d => isSameDay(d, current));
+    if (isDisabled) {
+      clippedTo = new Date(current);
+      clippedTo.setDate(clippedTo.getDate() - 1);
+      break;
+    }
+    current.setDate(current.getDate() + 1);
+  }
+
+  // If clipping makes end before start, fallback to just from
+    setRange({ from: val.from, to: clippedTo });
+};
 
   // create mailto URL prefilled
   function createMailto() {
@@ -137,8 +114,8 @@ export default function BookingPage() {
       return null;
     }
 
-    const checkIn = range.from.toISOString().slice(0, 10);
-    const checkOut = range.to.toISOString().slice(0, 10);
+    const checkIn = range.from.toDateString();
+    const checkOut = range.to.toDateString();
 
     const subject = `Booking Request – ${selectedHotel.name} – ${selectedRoom.name}`;
     const body = [
@@ -158,12 +135,8 @@ export default function BookingPage() {
     const mailto = `mailto:hostelnights@gmail.com?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
-    return mailto;
+    window.location.href = mailto;
   }
-
-  // ---- helper for Calendar 'disabled' prop: convert disabledDates into list of Date objects or ranges
-  // Many shadcn wrappers accept the same array we already have; but to be safe expose a normalized version.
-  const normalizedDisabled = useMemo(() => disabledDates, [disabledDates]);
 
   return (
     <main className="w-full">
@@ -187,9 +160,8 @@ export default function BookingPage() {
 
 
       {/* --- Booking Form Card --- */}
-
-      <section className="bg-background-secondary py-12">
-        <div className="max-w-4xl mx-auto px-6 py-25">
+        <section className="bg-background-secondary">
+        <div className=" max-w-4xl mx-auto px-6 py-35">
             <h1 className="text-5xl font-serif tracking-tight text-background-primary text-center mb-10">
                 Booking Information and Form
             </h1>
@@ -216,7 +188,7 @@ export default function BookingPage() {
     <div className="inline-flex items-center rounded-md border bg-background-secondary px-2 py-1">
       <button
         type="button"
-        onClick={decGuests}
+        onClick={() => setGuests((g) => Math.max(1, g - 1))}
         className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-background-primary/25 cursor-pointer transition"
         aria-label="Decrease guests"
       >
@@ -225,7 +197,7 @@ export default function BookingPage() {
       <div className="px-4 text-lg font-medium">{guests}</div>
       <button
         type="button"
-        onClick={incGuests}
+        onClick={() => setGuests((g) => g + 1)}
         className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-background-primary/25 cursor-pointer transition"
         aria-label="Increase guests"
       >
@@ -243,7 +215,7 @@ export default function BookingPage() {
       className="rounded-md border px-3 py-2 bg-background-secondary focus:outline-none focus:ring-2 focus:ring-foreground-primary focus:border-foreground-primary transition"
     >
       <option value="">Select hotel</option>
-      {hotelsList.map((h) => (
+      {hotels.map((h) => (
         <option key={h.slug} value={h.slug}>
           {h.name}
         </option>
@@ -280,56 +252,40 @@ export default function BookingPage() {
   </Button>
 </div>
           </div>
-        </div>
-      </section>
 
-      {/* --- Availability + Calendar area (shown after check) --- */}
-      <section ref={availabilityRef} className="py-12">
-        
-        <div className="max-w-4xl bg-background-secondary mx-auto px-6">
+      {/* --- Availability + Calendar area (shown after check) --- */}        
+        <div ref={availabilityRef}>
           {availabilityShown ? (
+            <div className="mt-18">
+                <div
+                    className={"mx-auto w-24 h-0.5 rounded bg-background-primary"}
+                    role="separator"
+                    aria-hidden="true"
+                />
+            <h3 className="text-4xl text-background-primary font-serif mt-15 mb-10 text-center">Available dates</h3>
+            { /* Availability card */}
             <div className="bg-white text-background-primary rounded-2xl shadow-md border border-foreground-primary/6 p-6">
-              <h3 className="text-xl font-semibold mb-4">Available dates</h3>
 
               {/* simple list of ranges */}
-              <div className="flex flex-col gap-3 mb-6">
-                {availableRanges.length === 0 ? (
-                  <div className="text-foreground-primary/80">No availability found.</div>
-                ) : (
-                  availableRanges.map((r, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center justify-between rounded-md border px-4 py-3 bg-background-secondary"
-                    >
-                      <div>
-                        <div className="text-sm text-foreground-primary/80">From</div>
-                        <div className="font-medium">{r.from}</div>
-                      </div>
+            <div className="flex flex-col gap-3 mb-6">
+            <div className="flex rounded-md border px-4 py-3 bg-background-secondary">
+                {/* From */}
+                <div className="flex-1">
+                <div className="text-sm text-background-primary">From</div>
+                <div className="font-medium">{range?.from.toDateString() ?? "-"}</div>
+                </div>
 
-                      <div>
-                        <div className="text-sm text-foreground-primary/80">To</div>
-                        <div className="font-medium">{r.to}</div>
-                      </div>
-
-                      <div>
-                        <button
-                          onClick={() => {
-                            // pick this demo range into the Calendar selection
-                            setRange({ from: new Date(r.from), to: new Date(r.to) });
-                          }}
-                          className="bg-foreground-primary text-background-primary px-4 py-2 rounded-md"
-                        >
-                          Select range
-                        </button>
-                      </div>
-                    </div>
-                  ))
-                )}
-              </div>
+                {/* To */}
+                <div className="flex-1">
+                <div className="text-sm text-background-primary">To</div>
+                <div className="font-medium">{range?.to.toDateString() ?? "-"}</div>
+                </div>
+            </div>
+            </div>
 
               {/* Calendar: single range picker */}
-              <div className="mb-4">
-                <p className="text-sm text-foreground-primary/80 mb-2">Select check-in and check-out dates</p>
+              <div className="mb-0">
+                <p className="text-sm text-background-primary mb-2">Select check-in and check-out dates</p>
 
                 {/* Calendar: this expects a shadcn Calendar that accepts:
                     - mode="range"
@@ -338,105 +294,42 @@ export default function BookingPage() {
                     - disabled (list of dates / ranges)
                     If your calendar component uses different prop names, adapt accordingly.
                 */}
-                <div className="bg-background-secondary p-4 rounded-lg">
+                <div className="bg-background-secondary p-4 rounded-lg
+                    origin-top
+                    [&_.rdp-day]:cursor-pointer
+                    [&_.rdp-nav_button]:cursor-pointer
+                    [&_.rdp-caption_label]:cursor-pointer
+                ">
                   <Calendar
                     mode="range"
                     selected={range}
-                    onSelect={(val) => {
-                      // most shadcn Calendar wrappers pass a Range object or null
-                      // we accept both: val could be { from: Date, to: Date } or Date[] etc.
-                      setRange(val);
-                    }}
-                    // pass disabled dates (many wrappers accept this shape)
-                    disabled={normalizedDisabled}
-                    // optional: pass a dayClassName to mark disabled days for cross-out
-                    // if your Calendar supports a prop like `dayClassName` or `dayContent`
-                    // replace below with implementation specific to your calendar.
-                    dayClassName={(date) => {
-                      // calendar libs differ: this prop may not exist. If it does, return classes for disabled days.
-                      return isDateDisabled(date) ? "aria-disabled" : "";
-                    }}
+                    onSelect={handleSelectRange}
+                    disabled={disabledDates}
+                    numberOfMonths={2}
+                    className="mx-auto"
                   />
-                </div>
-
-                <div className="mt-4 text-sm text-foreground-primary/70">
-                  Disabled dates are shown crossed out.
                 </div>
               </div>
 
               {/* Book Now */}
-              <div className="flex justify-center mt-4">
-                <a
-                  href={createMailto() ?? "#"}
-                  onClick={(e) => {
-                    if (!createMailto()) e.preventDefault();
-                  }}
-                  className="px-6 py-3 rounded-md bg-foreground-primary text-background-primary font-semibold"
-                >
-                  Book Now
-                </a>
-              </div>
+            <div className="flex flex-col items-center mt-8 gap-2">
+            <Button
+                onClick={createMailto}
+                className="text-lg px-8 py-6 mb-1 bg-background-primary hover:bg-background-primary-hover hover:cursor-pointer transition"
+            >
+                Book Now
+            </Button>
+            <div className="text-xs text-background-primary/50 text-center mb-6">
+                Note: This will open your email client with a prefilled email to <strong>hostelnights@gmail.com</strong>. The host will confirm by email.
+            </div>
+            </div>
 
-              <div className="text-sm text-foreground-primary/70 mt-4">
-                Note: This will open your email client with a prefilled email to{" "}
-                <strong>hostelnights@gmail.com</strong>. The host will confirm by email.
-              </div>
             </div>
-          ) : (
-            <div className="text-center text-foreground-primary/70">
-              Click <strong>Check Availability</strong> to view available dates.
             </div>
-          )}
+          ) : ( null )}
         </div>
-      </section>
-
-      {/* ---- small utility CSS for cross-out disabled dates ---- */}
-      <style jsx>{`
-        /* Many calendar implementations mark disabled days with aria-disabled="true"
-           or a .rdp-day_disabled class. The below targets [aria-disabled="true"] day cells
-           and draws a subtle diagonal line. If your Calendar uses different DOM, update the selector.
-        */
-
-        /* Common case: day element has aria-disabled attribute */
-        [aria-disabled="true"] {
-          position: relative;
-        }
-        [aria-disabled="true"]::after {
-          content: "";
-          position: absolute;
-          left: 6%;
-          top: 50%;
-          width: 88%;
-          height: 1px;
-          background: rgba(0, 0, 0, 0.18);
-          transform: rotate(-15deg);
-          transform-origin: center;
-          pointer-events: none;
-        }
-
-        /* If your Calendar marks disabled days with a class (e.g. .rdp-day_disabled),
-           uncomment/duplicate the rule below and adjust the selector:
-
-        .rdp-day_disabled {
-          position: relative;
-        }
-        .rdp-day_disabled::after {
-          content: "";
-          position: absolute;
-          left: 6%;
-          top: 50%;
-          width: 88%;
-          height: 1px;
-          background: rgba(0, 0, 0, 0.18);
-          transform: rotate(-15deg);
-        }
-        */
-
-        /* Slightly dim disabled days */
-        [aria-disabled="true"] > * {
-          opacity: 0.55;
-        }
-      `}</style>
+    </div>
+    </section>
     </main>
   );
 }
