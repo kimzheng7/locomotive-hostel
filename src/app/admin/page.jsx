@@ -9,12 +9,12 @@ export default function AdminPage() {
   const [selectedRoom, setSelectedRoom] = useState("");
   const [disabledDates, setDisabledDates] = useState([]);
   const [newDate, setNewDate] = useState("");
+  const [loadingDates, setLoadingDates] = useState(false);
 
   // ---- Fake backend login ----
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    // Replace this with real backend later
+    // to do!
     if (loginData.username === "admin" && loginData.password === "password") {
       setIsAuthenticated(true);
     } else {
@@ -30,11 +30,17 @@ export default function AdminPage() {
   };
 
   // ---- When room changes ----
-  const handleRoomChange = (e) => {
-    setSelectedRoom(e.target.value);
+  const handleRoomChange = async (e) => {
+    const roomSlug = e.target.value;
+    setSelectedRoom(roomSlug);
+    setLoadingDates(true); // ✅ Start loading
 
-    // Fetch disabled dates from backend later
-    setDisabledDates(["2025-02-10", "2025-02-11"]); // just dummy
+    // to do!
+    setTimeout(() => {
+      // Replace later with real backend call
+      setDisabledDates(["2025-02-10", "2025-02-11"]); // Dummy data
+      setLoadingDates(false); // ✅ Finished loading
+    }, 1000);
   };
 
   const addDisabledDate = () => {
@@ -47,9 +53,9 @@ export default function AdminPage() {
     setDisabledDates(disabledDates.filter((d) => d !== date));
   };
 
-  // ---- Fake backend save ----
   const updateDates = async () => {
-    alert(`Saving disabled dates for ${selectedRoom}: \n${disabledDates.join(", ")}`);
+    // to do!
+    alert(`Dates saved!`);
   };
 
   // ---- Login Screen ----
@@ -125,44 +131,52 @@ export default function AdminPage() {
       {selectedRoom && (
         <div>
           <h2 className="text-lg font-medium mb-2">Disabled Dates</h2>
-          <ul className="mb-3">
-            {disabledDates.map((date) => (
-              <li
-                key={date}
-                className="flex justify-between border p-2 rounded mb-2"
-              >
-                {date}
+
+          {/* ✅ Show Loading */}
+          {loadingDates ? (
+            <p className="text-sm text-gray-500 mb-3">Loading disabled dates...</p>
+          ) : (
+            <>
+              <ul className="mb-3">
+                {disabledDates.map((date) => (
+                  <li
+                    key={date}
+                    className="flex justify-between border p-2 rounded mb-2"
+                  >
+                    {date}
+                    <button
+                      className="text-red-600"
+                      onClick={() => removeDisabledDate(date)}
+                    >
+                      Remove
+                    </button>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex gap-2 mb-4">
+                <input
+                  type="date"
+                  className="border p-2 rounded"
+                  value={newDate}
+                  onChange={(e) => setNewDate(e.target.value)}
+                />
                 <button
-                  className="text-red-600"
-                  onClick={() => removeDisabledDate(date)}
+                  className="bg-black text-white px-3 rounded"
+                  onClick={addDisabledDate}
                 >
-                  Remove
+                  Add
                 </button>
-              </li>
-            ))}
-          </ul>
+              </div>
 
-          <div className="flex gap-2 mb-4">
-            <input
-              type="date"
-              className="border p-2 rounded"
-              value={newDate}
-              onChange={(e) => setNewDate(e.target.value)}
-            />
-            <button
-              className="bg-black text-white px-3 rounded"
-              onClick={addDisabledDate}
-            >
-              Add
-            </button>
-          </div>
-
-          <button
-            className="bg-green-600 text-white px-4 py-2 rounded"
-            onClick={updateDates}
-          >
-            Save Changes
-          </button>
+              <button
+                className="bg-green-600 text-white px-4 py-2 rounded"
+                onClick={updateDates}
+              >
+                Save Changes
+              </button>
+            </>
+          )}
         </div>
       )}
     </div>
