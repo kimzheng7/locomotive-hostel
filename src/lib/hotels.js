@@ -153,7 +153,48 @@ export const hotels = [
 				cost: "80",
 				amenities: ["Courtyard view","Bathroom","Bathtub","Hair dryer","Hot water","Bedroom and laundry","Essentials","Towels, bed sheets, soap, and toilet paper","Hangers","Bed linens","Extra pillows and blankets","Room-darkening shades","Iron","Drying rack for clothing","Clothing storage","Entertainment","TV with standard cable","Family","Window guards","Heating and cooling","Portable fans","Heating","Home safety","Carbon monoxide alarm","Internet and office","Wifi","Kitchen and dining","Kitchen","Space where guests can cook their own meals","Refrigerator","Microwave","Cooking basics","Pots and pans, oil, salt and pepper","Dishes and silverware","Bowls, chopsticks, plates, cups, etc.","Mini fridge","Freezer","Stove","Oven","Hot water kettle","Coffee maker","Wine glasses","Toaster","Baking sheet","Dining table","Coffee","Location features","Private entrance","Separate street or building entrance","Outdoor","Backyard","An open space on the property usually covered in grass","Parking and facilities","Elevator","Paid parking off premises","Paid parking on premises","Services","Pets allowed","Assistance animals are always allowed","Long term stays allowed","Allow stay for 28 days or more","Cleaning available during stay","Host greets you"],
 				rules: ["3 guests maximum", "No pets", "No parties or events", "No commercial photography", "No smoking", "On the last day, when you check out of the apartment, please open the window at the end of the sofa bed, then leave the apartment, close the front door and throw the keys back into the apartment through the already open window and we will find the keys either on the sofa bed or on the parquet floor."]
-			}
+			},
+            {
+				slug: "buda-castle-apartment",
+				name: "Buda Castle Apartment",
+				type: "Entire Apartment",
+				address: "1011 Budapest, Iskola utca 34-36",
+				guests: 2,
+				bedrooms: 1,
+				beds: 1,
+				bathrooms: 1,
+				description_short: "",
+				description: dontIndent
+				``,
+				getting_around: [],
+				arriving: [dontIndent
+				`If arriving by metro or by train to Keleti Train Station (Keleti PU):
+
+                Go to the main exit of the Keleti Train Station, look around the square and find the building which has a huge red sign on the roof: 'Canon'. Walk to that building along the left side of the square, and look for a pink 'MARIKA' sign just next to the K&H Bank. Under the 'AVON' sign there is a keypad, you have to ring bell 14, by simply typing 14.
+
+                If for some reason you don't see the Canon sign, than look for a big hotel called 'Grand Hotel Hungaria'. If you face this building while the train station is behind you, the building where the hostel is located is at your left, just across, to the left from the hotel's edge. There you can see the 'MARIKA' sign, next to the K&H Bank. Just ring 14.`,
+				dontIndent
+				`If arriving by international bus to Nepliget Bus Station:
+
+                This is a stop on the Metro 3 (also called Blue line or just M3) line. Go to the 'Deak Ferenc Ter' metro station (this is the meeting point of the three Metro lines we have in Budapest), switch to the Metro 2 line (M2 or Red Metro) and travel three stops to 'Keleti Pu' station. Pop up from the underground. From here just follow instructions from the previous point. (Find the building with the 'Canon' sign on the roof, walk there, look for 'MARIKA' sign and ring bell 14.)
+
+                Please note: You will need 1 ticket/person, the price of a ticket is 350HUF.`,
+				dontIndent
+				`If arriving by plane to Liszt Ferenc Airport (formerly known as Ferihegy Airport):
+
+                From the Airport travel by public transport bus number 200E to 'Kobanya Kispest' - the terminal of Metro 3 (Blue Metro line, also marked M3). Take this Metro line to 'Deak Ferenc Ter', (this is the meeting point of the three Metro lines we have in Budapest), switch to the Metro 2 line (M2 or Red Metro line) and travel three stops to 'Keleti Pu' station. Pop up from the underground. From here just follow instructions from the first point. (Find the building with the 'Canon' sign on the roof, walk there, look for 'MARIKA' sign and ring bell 14.)
+
+                Please note: You will need 2 tickets/person for this travel. One ticket costs 350 HUF. Keep your validated tickets for possible controls! It takes about 90 minutes to get to the hostel.`,
+				dontIndent
+				`Another possibility (from the Airport) is our cheap partner taxi, which can pick you up at the airport (9900HUF or 25EUR/car for 1 - 4 persons). The driver will be waiting for you at the airport with a sign: Terrace Apartment and he will bring you to the house. It takes about 45 minutes to get to the address. Please let us know if you need the taxi transfer, and in this case we will need some details about your flight.`,
+				dontIndent
+				`The third option is the airport minibus. You can order this service at the airport and they will also bring you to the building, but you have to wait a bit longer and you will travel with other passengers. The price is: 5400HUF/person for one way or 7500HUF/person for return.`
+				],
+				checkin: "2:00PM - 2:00AM",
+				checkout: "11:00AM",
+				cost: 80,
+				amenities: ["Washer", "Essentials", "Towels, bed sheets, soap, and toilet paper", "Entertainment", "TV with standard cable", "Heating and cooling", "Heating", "Home safety", "Fire extinguisher", "First aid kit", "Internet and office", "Wifi", "Kitchen and dining", "Kitchen", "Space where guests can cook their own meals", "Parking and facilities", "Elevator", "The home or building has an elevator that’s at least 52 inches deep and a doorway at least 32 inches wide", "Paid parking off premises"],
+				rules: ["2 guests maximum", "No pets", "No parties or events", "No commercial photography", "No smoking"]}
 		]
 	},
 	{

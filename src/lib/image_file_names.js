@@ -33,6 +33,14 @@ export const imageFileNames = {
 			kitchen: ["3df7cfab-2ea1-47dc-a4f3-4b1e136aa0b5.avif", "6ac0d26e-917b-4c3d-af8a-33587a70fc68.avif", "9c814969-8420-48df-9759-3c709e53168e.avif", "ca32c32a-a263-480f-9407-a2301a886432.avif"],
 			'living-room': ["096a4f40-88d8-46a6-a826-2c9ad39a28e2.avif", "27b11548-f11c-496e-bf2e-47e418e99bc2.avif", "2db120aa-69c1-4f03-93c2-78a6f7a81fbf.avif", "31194d6e-87fd-4ae1-beb3-2539d59456e5.avif", "5a21699e-9934-4563-bfdc-3fd25aab7d20.avif", "696b04d8-ce3e-47f2-a01c-4699f024de50.avif", "98330cb1-f0e9-48ea-9e9e-defd24358a79.avif", "f0326d86-931d-43d9-85a5-da18a5e0ff1c.avif"],
 			view: []
+		},
+        'buda-castle-apartment': {
+			bathroom: [],
+			bedroom: ["IMG_20220220_151605.jpg", "IMG_20220220_151655.jpg", "IMG_20220220_151756.jpg", "IMG_20220220_152159.jpg", "IMG_20220220_152242.jpg", "IMG_20220220_152444.jpg", "IMG_20220220_153221.jpg", "IMG_20220220_153353.jpg"],
+			exterior: [],
+			kitchen: [],
+			'living-room': ["IMG_20220220_151929.jpg", "IMG_20220220_152043.jpg", "IMG_20220220_152112.jpg", "IMG_20220220_152619.jpg", "IMG_20220220_152658.jpg", "IMG_20220220_153048.jpg"],
+			view: []
 		}
 	},
 	'balaton-stays': {
