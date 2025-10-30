@@ -61,7 +61,9 @@ export const hotels = [
             
                 The apartment has a large, comfortable, bright and elegant room, a huge terrace, a spacious bathroom with a bathtub and a small kitchen equipped with almost everything. The apartment has cable TV and fast WiFi is also available. Public transport is excellent, trolleybuses 76 and 75 stop in front of the house, which take you to Margaret Bridge, or in the opposite direction to Keleti Railway Station, Heroes' Square and the Népstadion. The nearest metro station is on Lehel Square, at the fourth block, and it is only a five-minute walk to Szent István Boulevard, where the most important tram and bus lines run.
                 
-                The apartment is located in one of the most popular urban areas of the city where you can walk undisturbed even at night. Security is also guaranteed by the fact that the gate of the house is always closed, and the door of the apartment is equipped with a security lock. Everything that is important, useful and interesting can be found in the area, whether for a shorter or longer stay. On the ground floor of the building is one of the most beautiful and most popular terrace cafes in Budapest, the Dunapark Café, and in the immediate vicinity there are grocery stores, dry cleaners, breakfast places, cafes, pubs, excellent and cheap Hungarian restaurants, clubs, general stores, a pharmacy, etc.`,
+                The apartment is located in one of the most popular urban areas of the city where you can walk undisturbed even at night. Security is also guaranteed by the fact that the gate of the house is always closed, and the door of the apartment is equipped with a security lock. Everything that is important, useful and interesting can be found in the area, whether for a shorter or longer stay. On the ground floor of the building is one of the most beautiful and most popular terrace cafes in Budapest, the Dunapark Café, and in the immediate vicinity there are grocery stores, dry cleaners, breakfast places, cafes, pubs, excellent and cheap Hungarian restaurants, clubs, general stores, a pharmacy, etc.
+                
+                Registration information: Following the statutory regulations regarding the registration of accommodation, we inform all our current and future guests that the type of accommodation is "private accommodation" and the registration number: MA19017204.`,
 				getting_around: getting_around_budapest_apartments,
 				arriving: directions_to_budapest_apartments,
 				checkin: "2:00PM - 1:00AM",
@@ -116,7 +118,9 @@ export const hotels = [
 
                 The location of this apartment is the greatest advantage, please check it on the city map. The public transport conditions are excellent, at Deak Ter there is the meeting point of the three Metro lines and on this square there are many stops of buses, trams and trolleybuses and 24 hour public transportation. Vaci utca means the center of Budapest, this is the main pedestrian area of Budapest. After a short walk you can reach the Danube river, the Chain Bridge, the famous passage, called Dunacorso, the world famous Cafes of Budapest, the best local restaurants and music clubs and also the Market Hall and the Thermal baths, so the cultural and gastronomic program options are unlimited in the area.
 
-                If you want to spend money on quality clothes, you can choose from the most famous shops and boutiques. Are you looking for a cozy apartment for rent in the city center close to Vaci utca? If yes, this is the apartment you are looking for.`,
+                If you want to spend money on quality clothes, you can choose from the most famous shops and boutiques. Are you looking for a cozy apartment for rent in the city center close to Vaci utca? If yes, this is the apartment you are looking for.
+                
+                Registration information: Following the statutory regulations regarding the registration of accommodation, we inform all our current and future guests that the type of accommodation is "private accommodation" and the registration number: MA19021872.`,
 				getting_around: [
 					dontIndent 
 					`The apartment is located in the heart of the city, at the famous pedestrian street. There is simply everything!
@@ -157,38 +161,48 @@ export const hotels = [
 			{
 				slug: "buda-castle-apartment",
 				name: "Buda Castle Apartment",
-				type: "Entire Apartment",
+				type: "Entire Apartment - Long Term (1+ month)",
 				address: "1011 Budapest, Iskola utca 34-36",
 				guests: 2,
 				bedrooms: 1,
 				beds: 1,
 				bathrooms: 1,
-				description_short: "",
+				description_short: "In Buda, opposite the Parliament, near historical buildings, this friendly apartment awaits its residents and guests. The quiet, peaceful area is excellent for rest and relaxation. The Fisherman's Bastion, the Buda Castle, the Matthias Church, the Citadel, the Statue of Liberty, Margaret Island, the Széchenyi Chain Bridge, the Parliament Building, the Basilica, the Hungarian State Opera House, the Western Railway Station, the Heroes' Square, the Pesti Vigadó, the Market Hall are just a few of the beautiful monuments of Budapest, all of which are within walking distance. Note that this apartment is only available for long term rent (1 month+).",
 				description: dontIndent
-				``,
-				getting_around: [],
-				arriving: [dontIndent
-				`If arriving by metro or by train to Keleti Train Station (Keleti PU):
+				`Wake up to birdsong in a quiet garden, right beneath the majestic Buda Castle. This charming apartment on Iskola Street is a true urban oasis: where history, comfort, and calm meet in the heart of Budapest.
+                
+                The spacious loft-style room offers a cozy, open atmosphere; the bathroom with a bathtub invites you to unwind after a day of exploring, and the large, fully equipped kitchen has everything you need to cook a relaxed breakfast or a homemade dinner. The neighborhood has everything at your doorstep: a Spar supermarket, lovely cafés, restaurants, and the Batthyány Square metro and tram station are just a short walk away. From there, you can reach any part of the city in minutes.
+                
+                Want to stretch your legs? The nearby staircase takes you straight up to Buda Castle where you can enjoy the stunning views of the Danube and the city below.
+                
+                You’ll love it because: it's peaceful with green surroundings in the heart of the city, there are birds singing in the inner garden, there is a bright and spacious loft layout, and cafes, shops, restaurants and public transport are all just steps away.
+                
+                Note that this apartment is only available for long term rent (1 month+).`,
+				getting_around: [
+                    'Batthyány Square metro and tram station are just a short walk away - and from there you can reach any part of the city in minutes.'
+                ],
+				arriving: [
+					dontIndent
+					`If arriving by metro or by train to Keleti Train Station (Keleti PU):
+                From the International Train Station, called Keleti Pu., travel three stops by Metro II (the red line) to 'Deak Ter' Station, walk 50 meters and you have already arrived at the house.
 
-                Go to the main exit of the Keleti Train Station, look around the square and find the building which has a huge red sign on the roof: 'Canon'. Walk to that building along the left side of the square, and look for a pink 'MARIKA' sign just next to the K&H Bank. Under the 'AVON' sign there is a keypad, you have to ring bell 14, by simply typing 14.
+                Please note: You will need 1 ticket/person for travel by public transportation, the price of one ticket is 350 HUF (~1.5 EUR).`,
+					dontIndent
+					`If arriving by international bus to Nepliget Bus Station:
+                This is a stop on Metro 3 (also known as the Blue line or simply M3) line. Travel to the 'Deak Ter' station, walk 50 meters on 'Deak Ferenc' Street, next to the Hotel Ritz, and you have already arrived at the house.
 
-                If for some reason you don't see the Canon sign, than look for a big hotel called 'Grand Hotel Hungaria'. If you face this building while the train station is behind you, the building where the hostel is located is at your left, just across, to the left from the hotel's edge. There you can see the 'MARIKA' sign, next to the K&H Bank. Just ring 14.`,
-				dontIndent
-				`If arriving by international bus to Nepliget Bus Station:
+                Please note: You will need 1 ticket/person for travel by public transportation, the price of one ticket is 350 HUF (~1.5 EUR).`,
+					dontIndent
+					`If arriving by plane to Liszt Ferenc Airport (formerly known as Ferihegy Airport):
+                From the airport, travel by public transport bus number 200E to 'Kobanya Kispest' - the terminal of Metro 3 (the blue metro line, also marked M3). From there, travel to the 'Deak Ter' station, walk 50 meters on 'Deak Ferenc' street, next to the Hotel Ritz, and you have already arrived at the house.
 
-                This is a stop on the Metro 3 (also called Blue line or just M3) line. Go to the 'Deak Ferenc Ter' metro station (this is the meeting point of the three Metro lines we have in Budapest), switch to the Metro 2 line (M2 or Red Metro) and travel three stops to 'Keleti Pu' station. Pop up from the underground. From here just follow instructions from the previous point. (Find the building with the 'Canon' sign on the roof, walk there, look for 'MARIKA' sign and ring bell 14.)
-
-                Please note: You will need 1 ticket/person, the price of a ticket is 350HUF.`,
-				dontIndent
-				`If arriving by plane to Liszt Ferenc Airport (formerly known as Ferihegy Airport):
-
-                From the Airport travel by public transport bus number 200E to 'Kobanya Kispest' - the terminal of Metro 3 (Blue Metro line, also marked M3). Take this Metro line to 'Deak Ferenc Ter', (this is the meeting point of the three Metro lines we have in Budapest), switch to the Metro 2 line (M2 or Red Metro line) and travel three stops to 'Keleti Pu' station. Pop up from the underground. From here just follow instructions from the first point. (Find the building with the 'Canon' sign on the roof, walk there, look for 'MARIKA' sign and ring bell 14.)
-
-                Please note: You will need 2 tickets/person for this travel. One ticket costs 350 HUF. Keep your validated tickets for possible controls! It takes about 90 minutes to get to the hostel.`,
-				dontIndent
-				`Another possibility (from the Airport) is our cheap partner taxi, which can pick you up at the airport (9900HUF or 25EUR/car for 1 - 4 persons). The driver will be waiting for you at the airport with a sign: Terrace Apartment and he will bring you to the house. It takes about 45 minutes to get to the address. Please let us know if you need the taxi transfer, and in this case we will need some details about your flight.`,
-				dontIndent
-				`The third option is the airport minibus. You can order this service at the airport and they will also bring you to the building, but you have to wait a bit longer and you will travel with other passengers. The price is: 5400HUF/person for one way or 7500HUF/person for return.`
+                Please note: You will need 2 tickets/person for travel by public transportation, the price of one ticket is 350 HUF (~1.5 EUR). It takes about 90 minutes to get to the apartment in total from the airport.`,
+					dontIndent
+					`From the airport, you can also take the 100 E bus to the center, 'Deak Ter'. The price of the ticket is higher than the price of public transport tickets, but still affordable, about HUF 2,800/person.`,
+					dontIndent
+					`Another possibility (from the Airport) is our cheap partner taxi, which can pick you up at the airport (9900HUF or 25EUR/car for 1 - 4 persons). The driver will be waiting for you at the airport with a sign that has the name of the property, and he will bring you to the house. It takes about 45 minutes to get to the address. Please let us know if you need the taxi transfer, and in this case we will need some details about your flight.`,
+					dontIndent
+					`The third option is the airport minibus. You can order this service at the airport and they will also bring you to the building, but you have to wait a bit longer and you will travel with other passengers. The price is: 5400HUF/person for one way or 7500HUF/person for return.`
 				],
 				checkin: "2:00PM - 2:00AM",
 				checkout: "11:00AM",
@@ -220,7 +234,9 @@ export const hotels = [
 
                 Sunshine, sunshine, sunshine, relax, sandy beach, green grass, gentle, cool waves in the lake, yes, all these come true if you come to Balatonszemes! Balatonszemes is a very good choice in many aspects to spend the holidays. It's central location gives you many possibilities to reach easily and quickly the other villages and thermal baths in the neighbourhood and the northern side aswell. From the port very often leave ships to the sights of the northern and southern coast of the lake. If you just want to relax, recharge yourself, engage in sports or fishing, you don't have to leave the village at all. The house on the pictures can be found on the shore of Lake Balaton, opposite the entrance of the free local beach. It's about 200-250 meters far from the port and the center of the village, where the shops and entertainment facilities can be found.
 
-                There are four apartments in the house, each has two balconies and a view to the lake. All flats are separated. Only the garden is shared where the cars can be placed. Each apartment is fully furnished and well-equipped. In the kitchen you can find a coffee-machine, toaster, microwave-oven, electric stove, fridge and all the dishes and spices. The bathroom is equipped with tub and separated from the toilet. The living room and the 1-2 bedrooms give enough space for a comfortable accomodation of 1-5 persons. Satellite-TV is also available in each apartment. On the balcony facing to the south and to the north you can relax, take in the sun, dine, and in the evenings it's a perfect place for long talking beside the wine-glasses.`,
+                There are four apartments in the house, each has two balconies and a view to the lake. All flats are separated. Only the garden is shared where the cars can be placed. Each apartment is fully furnished and well-equipped. In the kitchen you can find a coffee-machine, toaster, microwave-oven, electric stove, fridge and all the dishes and spices. The bathroom is equipped with tub and separated from the toilet. The living room and the 1-2 bedrooms give enough space for a comfortable accomodation of 1-5 persons. Satellite-TV is also available in each apartment. On the balcony facing to the south and to the north you can relax, take in the sun, dine, and in the evenings it's a perfect place for long talking beside the wine-glasses.
+                
+                Registration information: Following the regulations required by law regarding the registration of accommodation, we inform all our current and future guests that the type of accommodation is "other accommodation" and the registration number: EG19021305.`,
 				getting_around: ["All points, shops, restaurants and harbor of Balatonszemes can be reached on foot in a few minutes. We provide parking for two cars in the garden."],
 				arriving: [`If arriving by train: from the train station walk to Balaton Sailing Port (200 meters) and turn to the left to the City Beach. Our House is across of the main entrance of the beach. It takes 10 minutes by walk.`,
 					`If arriving by bus: from the bus station (Budapest - Balatonstemes) you have to turn to the right to the Lake and walk 300 meters to the trainstation then walk 200 meters till the Balaton Sailing Port and turn to the left to the City Beach. Our House is in front of the main entrance of the beach.`,
@@ -246,7 +262,9 @@ export const hotels = [
 				description: dontIndent
 				`Balatonszemes is a good choice in many aspects to spend the holidays. It's central location gives you many possibilities to reach easily and quickly the other villages and thermal baths in the neighbourhood and the northern side aswell. The house can be found on the shore of Lake Balaton, opposite the entrance of the local beach. It's about 200-250 meters far from the port and the center of the village, where the shops and entertainment facilities can be found. From the port very often leave ships to the sights of the northern and southern coast of the lake. If you just want to relax, recharge yourself, engage in sports or fishing, you don't have to leave the village at all. The house on the pictures can be found on the shore of Lake Balaton, opposite the entrance of the non-paying local beach. 
 
-                There are two apartments in the house, each has two balconies and a view to the lake. The flats are separated. Only the garden is shared where the cars can be placed. Each apartment is fully furnished and well-equipped. In the kitchen you can find a coffee-machine, toaster, microwave-oven, electric stove, fridge and all the dishes and spices. The bathroom is equipped with tub and separated from the toilet. The living room and the 1-2 bedrooms give enough space for a comfortable accomodation of 1-6 persons. Satellite-TV is also available in each apartment. On the balcony facing to the south and to the north you can relax, take the sun, dine, and in the evenings it's a perfect place for long talking beside the wine-glasses.`,
+                There are two apartments in the house, each has two balconies and a view to the lake. The flats are separated. Only the garden is shared where the cars can be placed. Each apartment is fully furnished and well-equipped. In the kitchen you can find a coffee-machine, toaster, microwave-oven, electric stove, fridge and all the dishes and spices. The bathroom is equipped with tub and separated from the toilet. The living room and the 1-2 bedrooms give enough space for a comfortable accomodation of 1-6 persons. Satellite-TV is also available in each apartment. On the balcony facing to the south and to the north you can relax, take the sun, dine, and in the evenings it's a perfect place for long talking beside the wine-glasses.
+                
+                Registration information: Following the regulations required by law regarding the registration of accommodation, we inform all our current and future guests that the type of accommodation is "other accommodation" and the registration number: EG19021305.`,
 				getting_around: ["All points, shops, restaurants and harbor of Balatonszemes can be reached on foot in a few minutes. We provide parking for two cars in the garden."],
 				arriving: [
 					`If arriving by train: from the train station walk to Balaton Sailing Port (200 meters) and turn to the left to the City Beach. Our House is across of the main entrance of the beach. It takes 10 minutes by walk.`,
@@ -287,7 +305,9 @@ export const hotels = [
 
                 Surprise yourself and your partner with something nice and special, enjoy your rest in our romantic four-poster beds! We offer you double or twin private rooms, all rooms with a really pleasant atmosphere. After a hard day or a hard night you can watch SAT-TV from the comfort of your bed as there is televison in every rooms. LOCOMOTIVE LIGHT HOSTEL WON'T DISAPPOINT YOU!
 
-                There is an equipped kitchen in the Hostel, you can find there a stove, fridge, freezer, microwave oven, coffee machine, toaster, turmix machine, dishes, plates, etc..., drink coffee, tea and cacao, as much you like, for FREE! Other food and drinks you can buy downstairs in the nonstop supermarket. We provide you 24 hours FREE INTERNET access, FREE WiFi and PC. The common room is also well equipped and well decorated, helping to provide an easygoing atmosphere where you can make your stay fun and memorable. There is washing machine in the hostel.`,
+                There is an equipped kitchen in the Hostel, you can find there a stove, fridge, freezer, microwave oven, coffee machine, toaster, turmix machine, dishes, plates, etc..., drink coffee, tea and cacao, as much you like, for FREE! Other food and drinks you can buy downstairs in the nonstop supermarket. We provide you 24 hours FREE INTERNET access, FREE WiFi and PC. The common room is also well equipped and well decorated, helping to provide an easygoing atmosphere where you can make your stay fun and memorable. There is washing machine in the hostel.
+                
+                Registration information: Following the statutory regulations regarding the registration of accommodation, we inform all our current and future guests that the type of accommodation is "other accommodation" and the registration number: EG19021291.`,
 				getting_around: ["Keleti Trainstation, International Trainstation", "Metro 2., Metro 4. terminal", "Buses, 7., 5., 20., 30., 78., night buses", "Tram, 24.", "Trolley Buses, 73., 75., 76.", "Parking garden is situated behind of the house, -8.-EUR/day, 24 hours open", "Free parking is possible in Arena Plaza Garage", "Parking on the street is also available, week days from 08:00 to 18:00 the fee is 350.-HUF/hour, during the weekend the parking is free of charge."],
 				arriving: [dontIndent
 				`If arriving by metro or by train to Keleti Train Station (Keleti PU):
@@ -332,7 +352,9 @@ export const hotels = [
 
                 If you plan on coming or leaving by train, don't waste your time and energy to carry your heavy luggage cross the town! Within couple of minutes you arrive, get rid of your load and the City is yours immediately! It is an ideal place for your crawls in the City, surrounded by lots of pubs, restaurants, cafes, nightclubs, a post office and 24 hour grocery shops and all important things you might need during your stay in Budapest. Pubs, clubs, historical and cultural attractions as well, as the business and shopping centre of Budapest are within walking distance....
 
-                There is an equipped kitchen in the Hostel, you can find there a stove, fridge, freezer, microwave oven, coffee machine, toaster, turmix machine, dishes, plates, etc..., drink coffee, tea and cacao, as much you like, for FREE! Other food and drinks you can buy downstairs in the nonstop supermarket. We provide you 24 hours FREE INTERNET access, FREE WiFi and PC. The common room is also well equipped and well decorated, helping to provide an easygoing atmosphere where you can make your stay fun and memorable. There is washing machine in the hostel.`,
+                There is an equipped kitchen in the Hostel, you can find there a stove, fridge, freezer, microwave oven, coffee machine, toaster, turmix machine, dishes, plates, etc..., drink coffee, tea and cacao, as much you like, for FREE! Other food and drinks you can buy downstairs in the nonstop supermarket. We provide you 24 hours FREE INTERNET access, FREE WiFi and PC. The common room is also well equipped and well decorated, helping to provide an easygoing atmosphere where you can make your stay fun and memorable. There is washing machine in the hostel.
+                
+                Registration information: Following the statutory regulations regarding the registration of accommodation, we inform all our current and future guests that the type of accommodation is "other accommodation" and the registration number: EG19021291.`,
 				getting_around: ["Keleti Trainstation, International Trainstation", "Metro 2., Metro 4. terminal", "Buses, 7., 5., 20., 30., 78., night buses", "Tram, 24.", "Trolley Buses, 73., 75., 76.", "Parking garden is situated behind of the house, -8.-EUR/day, 24 hours open", "Free parking is possible in Arena Plaza Garage", "Parking on the street is also available, week days from 08:00 to 18:00 the fee is 350.-HUF/hour, during the weekend the parking is free of charge."],
 				arriving: [dontIndent
 				`If arriving by metro or by train to Keleti Train Station (Keleti PU):
