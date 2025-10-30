@@ -179,8 +179,8 @@ export const hotels = [
                 
                 Note that this apartment is only available for long term rent (1 month+).`,
 				getting_around: [
-                    'Batthyány Square metro and tram station are just a short walk away - and from there you can reach any part of the city in minutes.'
-                ],
+					'Batthyány Square metro and tram station are just a short walk away - and from there you can reach any part of the city in minutes.'
+				],
 				arriving: [
 					dontIndent
 					`If arriving by metro or by train to Keleti Train Station (Keleti PU):
